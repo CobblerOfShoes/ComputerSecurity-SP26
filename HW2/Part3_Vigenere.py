@@ -265,7 +265,7 @@ def main():
           prog='Vigenere Kasiski Analysis',
           description='Program description',
   )
-  modes = parser.add_mutually_exclusive_group()
+  modes = parser.add_mutually_exclusive_group(required=True)
   modes.add_argument('--scan', '-s', action='store_true',
                       help="Scan the provided ciphertext for repeated letter chains.")
   modes.add_argument('--crack', '-c', action='store_true',
