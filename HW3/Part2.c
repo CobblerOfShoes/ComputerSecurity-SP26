@@ -12,9 +12,13 @@ int insecure_main()
   char str1[10];
   char str2[10];
   memset(result,'\0',10);
+  // Vulnerability 1: Don't use gets, use fgets (no bounds checking)
   gets(str1);
+  // Vulnerability 2: Don't use gets
   gets(str2);
+  // Vulnerability 3: Use strncpy instead for bounds checking
   strcpy(result, str1);
+  // Vulnerability 4: Use strncat instead for bounds checking
   strcat(result, str2);
   length_check(result);
   return(0);
