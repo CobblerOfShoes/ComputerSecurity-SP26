@@ -24,6 +24,8 @@ int insecure_main()
   return(0);
 }
 
+// ----------------------------------------------------------------
+
 int secure_main()
 {
   char result[10] = {0};
@@ -31,10 +33,18 @@ int secure_main()
   char str1[10] = {0};
   char str2[10] = {0};
 
-  fgets(buffer, BUFSIZ, stdin);
+  printf("Please enter the first string (max 9 characters):\n");
+  if (!fgets(buffer, BUFSIZ, stdin)) {
+    fprintf(stderr, "Error reading first string\n");
+    return(1);
+  }
   sscanf(buffer, "%9s", str1);
 
-  fgets(buffer, BUFSIZ, stdin);
+  printf("Please enter the second string (max 9 characters):\n");
+  if (!fgets(buffer, BUFSIZ, stdin)) {
+    fprintf(stderr, "Error reading second string\n");
+    return(1);
+  }
   sscanf(buffer, "%9s", str2);
 
   str1[strcspn(str1, "\n")] = '\0';
